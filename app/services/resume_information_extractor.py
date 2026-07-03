@@ -1,5 +1,7 @@
 import re
 
+from app.models.resume import ContactInfo, ResumeData, ResumeSections
+
 
 SECTION_KEYS = (
     "summary",
@@ -47,14 +49,14 @@ GITHUB_PATTERN = re.compile(
 class ResumeInformationExtractor:
     """Extract basic contact fields and resume sections from cleaned text."""
 
-    def extract(self, clean_text: str) -> dict[str, dict[str, str]]:
+    def extract(self, clean_text: str) -> ResumeData:
         """Return deterministic structured information from cleaned resume text."""
         text = clean_text.strip()
 
-        return {
-            "contact": self._extract_contact(text),
-            "sections": self._extract_sections(text),
-        }
+        return ResumeData(
+            contact=ContactInfo(**self._extract_contact(text)),
+            sections=ResumeSections(**self._extract_sections(text)),
+        )
 
     def _extract_contact(self, text: str) -> dict[str, str]:
         contact = {
