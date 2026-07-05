@@ -28,3 +28,9 @@ class ATSScoreResult(BaseModel):
     education_score: float = 100.0
     experience_score: float = 100.0
     projects_score: float = 100.0
+
+
+class RecommendationResult(BaseModel):
+    """Actionable ATS resume improvement recommendations."""
+
+    recommendations: list[str] = Field(default_factory=list)
