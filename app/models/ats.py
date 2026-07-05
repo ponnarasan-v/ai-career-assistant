@@ -18,3 +18,13 @@ class SectionMatchResult(BaseModel):
     education_score: float = 100.0
     experience_score: float = 100.0
     projects_score: float = 100.0
+
+
+class ATSScoreResult(BaseModel):
+    """Weighted ATS compatibility score with preserved section scores."""
+
+    overall_score: float = 100.0
+    skills_score: float = 100.0
+    education_score: float = 100.0
+    experience_score: float = 100.0
+    projects_score: float = 100.0
