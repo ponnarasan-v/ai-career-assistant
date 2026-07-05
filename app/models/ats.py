@@ -9,3 +9,12 @@ class KeywordMatchResult(BaseModel):
     coverage_percentage: float = 100.0
     total_required_keywords: int = 0
     matched_keyword_count: int = 0
+
+
+class SectionMatchResult(BaseModel):
+    """Independent ATS compatibility scores for major resume sections."""
+
+    skills_score: float = 100.0
+    education_score: float = 100.0
+    experience_score: float = 100.0
+    projects_score: float = 100.0
