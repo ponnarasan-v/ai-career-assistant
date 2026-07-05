@@ -34,3 +34,12 @@ class RecommendationResult(BaseModel):
     """Actionable ATS resume improvement recommendations."""
 
     recommendations: list[str] = Field(default_factory=list)
+
+
+class ATSAnalysisResult(BaseModel):
+    """Complete ATS analysis output for a resume and job description."""
+
+    keyword_match: KeywordMatchResult = Field(default_factory=KeywordMatchResult)
+    section_scores: SectionMatchResult = Field(default_factory=SectionMatchResult)
+    ats_score: ATSScoreResult = Field(default_factory=ATSScoreResult)
+    recommendations: RecommendationResult = Field(default_factory=RecommendationResult)
